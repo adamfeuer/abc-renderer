@@ -1,10 +1,10 @@
 {
-  "name": "hello_world",
+  "name": "abc_renderer",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
+  "description": "ABC Renderer for NodeJS",
   "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
-  "author": "SAM CLI",
+  "repository": "",
+  "author": "Adam Feuer",
   "license": "MIT",
   "dependencies": {
     "axios": ">=1.6.0"
