@@ -24,7 +24,7 @@ Resources:
           Type: Api
           Properties:
             Path: /render
-            Method: get
+            Method: post
     Metadata:
       DockerTag: nodejs20.x-v1
       DockerContext: ./abc-renderer
