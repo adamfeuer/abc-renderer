@@ -15,7 +15,10 @@
 import * as jsdom from 'jsdom'
 const { JSDOM } = jsdom;
 // const abcjs = require('abcjs');
-import * as abcjs from 'abcjs'
+import abcjs from 'abcjs'
+global.navigator = {
+  userAgent: "node.js"
+};
 
 export const lambdaHandler = async (event, context) => {
 
@@ -44,16 +47,19 @@ export const lambdaHandler = async (event, context) => {
     const { window } = new JSDOM('<!DOCTYPE html><html><body></body></html>');
     global.document = window.document;
 
+    var svgOutput;
     try {
       const container = document.createElement('div');
+      // console.log(abcjs, typeof(abcjs))
+      console.log(abcjs.renderAbc, typeof(abcjs.renderAbc))
       abcjs.renderAbc(container, abcNotation, { add_classes: true });
-      let svgOutput = container.innerHTML;
+      svgOutput = container.innerHTML;
 
       if (!svgOutput.startsWith('<?xml')) {
         svgOutput = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n` + svgOutput;
       }
-      res.end(svgOutput);
     } catch (error) {
+      console.error(error)
       const response = {
         statusCode: 500,
         headers: {'content-type': 'application/json'},
@@ -66,7 +72,7 @@ export const lambdaHandler = async (event, context) => {
     const response = {
       statusCode: 200,
       headers: {'content-type': 'image/svg+xml'},
-      body: data
+      body: svgOutput
     };
 
     return response;
