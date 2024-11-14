@@ -1,6 +1,8 @@
 # abc-renderer
 
-Renders ABC musical notation to SVG of staff notation using the abcjs library
+AWS Lambda function to render ABC musical notation to SVG of staff notation.
+
+Uses the abcjs Javascript library.
 
 ## License
 
